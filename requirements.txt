@@ -1,0 +1,34 @@
+## Requirements
+
+### Python
+```
+miner3
+pandas
+numpy
+scikit-learn
+lifelines
+scipy
+joblib
+```
+
+### R
+```
+affy
+affyio
+makecdfenv
+topGO
+org.Hs.eg.db
+GOSemSim
+```
+
+Install Python dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+Install R dependencies:
+```r
+BiocManager::install(c("affy", "affyio", "makecdfenv", "topGO", "org.Hs.eg.db", "GOSemSim"))
+```
+
+---
