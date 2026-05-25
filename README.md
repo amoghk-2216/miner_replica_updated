@@ -55,8 +55,9 @@ gbmMINER-replication/
 │   ├── 01_preprocess_expr.ipynb       # TCGA expression preprocessing
 │   ├── 02_preprocess_mirna.ipynb      # miRNA preprocessing
 │   ├── 03_run_miner.ipynb             # MINER pipeline execution
-│   └── 04_downstream_analysis.ipynb   # Cox regression, validation
-├── scripts/
+│   └── 04_downstream_analysis.ipynb   # Cox regression, validation (TO BE UPLOADED)
+|
+├── scripts/ (TO BE UPLOADED)
 │   ├── gravendeel_preprocessing.R     # RMA normalization with ENTREZG CDF
 │   ├── topgo_enrichment.R             # GO BP enrichment per regulon
 │   └── hallmark_similarity.R          # Jiang-Conrath hallmark enrichment
@@ -64,10 +65,25 @@ gbmMINER-replication/
 │   ├── miner_input/
 │   │   ├── clinical_data.csv
 │   │   └── mutation_matrix.csv
-│   └── miner_output/
-│       ├── disease_relevant_regulons.csv
-│       ├── regulon_cox_results.csv
-│       └── gravendeel_coexp_validated_regulons.csv
+│   └── miner_output_results/
+│       ├── output_diagrams/
+|       └── cluster_preview.pdf
+|       └── gene_variance_dist.pdf
+|       └── mosaic_all.pdf
+│       └── mosaic_activity_heatmap.pdf
+│       └── programs_vs_states.pdf
+│       └── cluster_preview.pdf
+│       └── regulon_activity_heatmap.pdf
+│       └── sample_means_before_fix.pdf
+│       └── transcriptional_programs.pdf
+│    └── miner_output_jsons/
+│       └── coexpressionDictionary.pdf
+│       ├── coexpressionModules.json
+│       └── coregulationModules.json
+│       └── mechanisticOutput.json
+│       └── regulons.json
+│       └── transcriptional_programs.json
+│       └── transcriptional_states.json
 └── README.md
 ```
 
