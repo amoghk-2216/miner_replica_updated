@@ -92,7 +92,21 @@ causalInference() → Cox regression
 - Survival validation: Cox HR p ≤ 0.05 in TCGA
 - Hallmark enrichment: GO BP enrichment against Hanahan & Weinberg 2011 hallmarks
 
----
+### Requirements
+
+### Python
+See requirements.txt
+
+### R
+```
+affy
+affyio
+makecdfenv
+topGO
+org.Hs.eg.db
+GOSemSim
+```
+
 
 
 ## References
