@@ -1,14 +1,16 @@
 # gbmMINER Replication
 
-Independent replication of the gbmMINER transcriptional regulatory network for glioblastoma, as described in:
-
-> Warsow et al. (2024). gbmMINER: A systems scale genotype to phenotype map of causal and mechanistic drivers of clinical outcomes in GBM. *medRxiv*. https://doi.org/10.1101/2024.04.05.24305380
+Replication of the gbmMINER transcriptional regulatory network for glioblastoma multiforme (GBM), as described in:
+'An atlas of causal and mechanistic drivers of interpatient heterogeneity in glioma'
+https://www.medrxiv.org/content/10.1101/2024.04.05.24305380v1.full
 
 ---
 
 ## Overview
 
-gbmMINER applies the MINER (Mechanistic Inference of Node-Edge Relationships) algorithm to multi-omics data from 547 TCGA GBM patients to construct a causal and mechanistic transcriptional regulatory network. The network maps somatic mutations through transcription factors and miRNAs to disease-relevant co-expressed gene modules (regulons), transcriptional programs, and patient states.
+gbmMINER applies the MINER (Mechanistic Inference of Node-Edge Relationships) algorithm to multi-omics data from 547 TCGA GBM patients to construct a causal and mechanistic TRN. 
+
+The network maps somatic mutations via TFs and miRNAs to disease-relevant co-expressed gene modules (regulons), transcriptional programs, and patient states.
 
 This repository contains the full replication pipeline including data preprocessing, MINER execution, downstream analysis, and independent validation.
 
@@ -16,15 +18,15 @@ This repository contains the full replication pipeline including data preprocess
 
 ## Key Results
 
-| Metric | Paper | This Replication |
-|--------|-------|-----------------|
-| Co-expression clusters | ~500 est. | 502 |
-| Regulon modules | 3,797 | 4,504 |
-| Transcriptional states | 23 | 23 ✓ |
-| Transcriptional programs | 179 | 175 |
-| Disease-relevant regulons | 1,083 | in progress |
-| Causal mutations | 30 | 28 |
-| Causal TFs | 306 | 254 |
+| Metric                    | Paper     | This Replication |
+|------------------------   |-------    |----------------- |
+| Co-expression clusters    | ~500 est. | 502              |
+| Regulon modules           | 3,797     | 4,504            |
+| Transcriptional states    | 23        | 23               |
+| Transcriptional programs  | 179       | 175              |
+| Disease-relevant regulons | 1,083     | 836 (refining)   |
+| Causal mutations          | 30        | 28               |
+| Causal TFs                | 306       | 254              |
 
 ---
 
@@ -85,54 +87,13 @@ networkQuantization() → transcriptionalPrograms() → transcriptionalStates() 
 causalInference() → Cox regression
 ```
 
-### 3. Key Fixes Applied
-- Per-sample mean centering — removed dominant batch artifact (PC1: 73.4% → 27%)
-- Ensembl IDs for mechanistic inference, symbol IDs for causal inference
-- `decompose` patch — empty array guard for IndexError at high `maxSamplesExcluded`
-- Integer cluster keys — fixed KeyError in mechanistic inference
-- `reviseInitialClusters threshold=0.925` — correct after mean centering
-
-### 4. Independent Validation
+### 3. Independent Validation
 - Co-expression validation in Gravendeel: PC1 variance ≥ 0.3 and empirical p ≤ 0.05 (500 permutations)
 - Survival validation: Cox HR p ≤ 0.05 in TCGA
 - Hallmark enrichment: GO BP enrichment against Hanahan & Weinberg 2011 hallmarks
 
 ---
 
-## Requirements
-
-### Python
-```
-miner3
-pandas
-numpy
-scikit-learn
-lifelines
-scipy
-joblib
-```
-
-### R
-```
-affy
-affyio
-makecdfenv
-topGO
-org.Hs.eg.db
-GOSemSim
-```
-
-Install Python dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-Install R dependencies:
-```r
-BiocManager::install(c("affy", "affyio", "makecdfenv", "topGO", "org.Hs.eg.db", "GOSemSim"))
-```
-
----
 
 ## References
 
