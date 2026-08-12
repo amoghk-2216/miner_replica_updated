@@ -24,7 +24,7 @@ This repository contains the full replication pipeline including data preprocess
 | Regulon modules           | 3,797     | 4,504            |
 | Transcriptional states    | 23        | 23               |
 | Transcriptional programs  | 179       | 175              |
-| Disease-relevant regulons | 1,083     | 836 (refining)   |
+| Disease-relevant regulons | 1,083     | 836   |
 | Causal mutations          | 30        | 28               |
 | Causal TFs                | 306       | 254              |
 
